@@ -1,0 +1,26 @@
+# Implementar en este fichero las Pruebas Unitarias asociadas a la clase Fraccion
+
+require "./racional.rb"
+require "test/unit"
+
+class Test_Fraccion < Test::Unit::TestCase
+  
+  def setup
+    @p = Fraccion.new(6, 12)
+    @q = Fraccion.new(18, 14)
+  end
+  
+  def test_simple
+    assert_equal("1/2",@p.to_s)
+    assert_equal("9/7",@q.to_s)
+    assert_equal("9/14", (@p*@q).to_s)
+    assert_equal("7/18", (@p/@q).to_s)
+    assert_equal("25/14", (@p+@q).to_s)
+    assert_equal("-11/14", (@p-@q).to_s)
+  end
+  
+  def test_failure
+    assert_equal("12/12",(@p+@q).to_s, "Adding doesn't work" )
+  end
+  
+end
